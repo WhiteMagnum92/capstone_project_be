@@ -19,12 +19,14 @@ public class Gnomo implements Razza {
 		//settaggio velocita
 		p.setVelocita(7.5);
 		// settaggio dei privilegi
-		Privilegio p1 = new Privilegio("Scurovisione", "Possibilita di vedere fino a 18m al buio");
-		Privilegio p2 = new Privilegio("Astuzia Gnomesca", "Vantaggio ai TS su intelligenza, saggezza, carisma contro la magia");
-		List<Privilegio> privilegi = p.getPrivilegi();
-		privilegi.add(p1);
-		privilegi.add(p2);
-		p.setPrivilegi(privilegi);
+		/*
+		 * Privilegio p1 = new Privilegio("Scurovisione",
+		 * "Possibilita di vedere fino a 18m al buio"); Privilegio p2 = new
+		 * Privilegio("Astuzia Gnomesca",
+		 * "Vantaggio ai TS su intelligenza, saggezza, carisma contro la magia");
+		 * List<Privilegio> privilegi = p.getPrivilegi(); privilegi.add(p1);
+		 * privilegi.add(p2); p.setPrivilegi(privilegi);
+		 */
 		
 	}
 

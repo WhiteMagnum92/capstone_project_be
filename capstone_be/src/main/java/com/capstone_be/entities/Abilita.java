@@ -1,7 +1,6 @@
 package com.capstone_be.entities;
 
-import java.util.List;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,14 +13,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Incantesimo {
+public class Abilita {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	Integer id;
+	@Column
 	String nome;
-	Integer lvl;
-	List<String> classe;
-	
+	@Column
+	String descrizione;
 
 }

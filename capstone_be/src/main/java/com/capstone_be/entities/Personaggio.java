@@ -1,6 +1,7 @@
 package com.capstone_be.entities;
 
 import java.util.List;
+import java.util.Map;
 
 import com.SpringBoot_SpringSecurity.entity.User;
 
@@ -14,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 public class Personaggio {
 	
+	Integer id;
 	List<Integer> caratteristiche;
 	Integer ca;
 	Integer iniziativa;
@@ -21,10 +23,10 @@ public class Personaggio {
 	Integer competenza;
 	Integer pf;
 	List<String> ts;
-	List<String> abilita;
+	List<Abilita> abilita;
 	String dv;
 	String nome;
-	List<Integer> lv;
+	Integer lvl;
 	List <Razza> razza;
 	String background;
 	String allineamento;
@@ -36,8 +38,9 @@ public class Personaggio {
 	String capelli;
 	List<Privilegio> privilegi;
 	List<Incantesimo> incantesimi;
-	List<Classe> classi;
+	Classe classe;
 	User user;
+	Map<String, Integer> genericValue;
 	
 	public void aumentaLivello() {}
 	

@@ -20,14 +20,16 @@ public class Halfling implements Razza {
 					//settaggio velocita
 					p.setVelocita(7.5);
 					// settaggio dei privilegi
-					Privilegio p1 = new Privilegio("Fortunato", "Quando ottiene 1 a un tiro per colpire, a una prova di caratteristica o a un tiro salvezza, puo ripetere il tiro del dado e deve usare il nuovo risultato");
-					Privilegio p2 = new Privilegio("Coraggioso", "Vantaggio ai TS per non essere spaventato");
-					Privilegio p3 = new Privilegio("Agilita Halfling", "Puo muoversi attraverso gli spazi di qualsiasi creatura piu grande");
-					List<Privilegio> privilegi = p.getPrivilegi();
-					privilegi.add(p1);
-					privilegi.add(p2);
-					privilegi.add(p3);
-					p.setPrivilegi(privilegi);
+					/*
+					 * Privilegio p1 = new Privilegio("Fortunato",
+					 * "Quando ottiene 1 a un tiro per colpire, a una prova di caratteristica o a un tiro salvezza, puo ripetere il tiro del dado e deve usare il nuovo risultato"
+					 * ); Privilegio p2 = new Privilegio("Coraggioso",
+					 * "Vantaggio ai TS per non essere spaventato"); Privilegio p3 = new
+					 * Privilegio("Agilita Halfling",
+					 * "Puo muoversi attraverso gli spazi di qualsiasi creatura piu grande");
+					 * List<Privilegio> privilegi = p.getPrivilegi(); privilegi.add(p1);
+					 * privilegi.add(p2); privilegi.add(p3); p.setPrivilegi(privilegi);
+					 */
 		
 	}
 

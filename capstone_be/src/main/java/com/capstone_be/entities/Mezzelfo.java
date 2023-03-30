@@ -20,14 +20,16 @@ public class Mezzelfo implements Razza {
 					//settaggio velocita
 					p.setVelocita(9.0);
 					// settaggio dei privilegi
-					Privilegio p1 = new Privilegio("Scurovisione", "Possibilita di vedere fino a 18m al buio");
-					Privilegio p2 = new Privilegio("Versatilita nelle Abilita", "Compentenza in due abilita a sua scelta");
-					Privilegio p3 = new Privilegio("Retaggio Fatato", "Vantaggio TS contro affascinamento e non puo essere addormentato magicamente");
-					List<Privilegio> privilegi = p.getPrivilegi();
-					privilegi.add(p1);
-					privilegi.add(p2);
-					privilegi.add(p3);
-					p.setPrivilegi(privilegi);
+					/*
+					 * Privilegio p1 = new Privilegio("Scurovisione",
+					 * "Possibilita di vedere fino a 18m al buio"); Privilegio p2 = new
+					 * Privilegio("Versatilita nelle Abilita",
+					 * "Compentenza in due abilita a sua scelta"); Privilegio p3 = new
+					 * Privilegio("Retaggio Fatato",
+					 * "Vantaggio TS contro affascinamento e non puo essere addormentato magicamente"
+					 * ); List<Privilegio> privilegi = p.getPrivilegi(); privilegi.add(p1);
+					 * privilegi.add(p2); privilegi.add(p3); p.setPrivilegi(privilegi);
+					 */
 	}
 
 	@Override

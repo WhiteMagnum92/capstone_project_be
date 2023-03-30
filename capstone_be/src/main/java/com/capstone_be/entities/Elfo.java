@@ -21,14 +21,15 @@ public class Elfo implements Razza {
 			//settaggio velocita
 			p.setVelocita(9.0);
 			// settaggio dei privilegi
-			Privilegio p1 = new Privilegio("Scurovisione", "Possibilita di vedere fino a 18m al buio");
-			Privilegio p2 = new Privilegio("Trance", "Anziche dormire 8 ore, trance per 4");
-			Privilegio p3 = new Privilegio("Retaggio Fatato", "Vantaggio TS contro affascinamento e non puo essere addormentato magicamente");
-			List<Privilegio> privilegi = p.getPrivilegi();
-			privilegi.add(p1);
-			privilegi.add(p2);
-			privilegi.add(p3);
-			p.setPrivilegi(privilegi);
+			/*
+			 * Privilegio p1 = new Privilegio("Scurovisione",
+			 * "Possibilita di vedere fino a 18m al buio"); Privilegio p2 = new
+			 * Privilegio("Trance", "Anziche dormire 8 ore, trance per 4"); Privilegio p3 =
+			 * new Privilegio("Retaggio Fatato",
+			 * "Vantaggio TS contro affascinamento e non puo essere addormentato magicamente"
+			 * ); List<Privilegio> privilegi = p.getPrivilegi(); privilegi.add(p1);
+			 * privilegi.add(p2); privilegi.add(p3); p.setPrivilegi(privilegi);
+			 */
 			 
 		}
 
