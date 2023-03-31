@@ -19,7 +19,7 @@ public class Privilegio {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	Integer id;
 	@Column
-	String nome;
+	String name;
 	@Column
 	String descrizione;
 

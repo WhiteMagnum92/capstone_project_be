@@ -1,6 +1,8 @@
-package com.capstone_be.entities;
+package com.capstone_be.utilities;
 
 import java.util.List;
+
+import com.capstone_be.entities.Personaggio;
 
 public interface Razza {
 	

@@ -1,27 +1,25 @@
-package com.capstone_be.entities;
+package com.capstone_be.utilities;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dragonide implements Razza {
+import com.capstone_be.entities.Personaggio;
+
+public class Umano implements Razza {
 
 	@Override
 	public void applicaCambiamenti(Personaggio p) {
 		List<Integer> caratteristiche = p.getCaratteristiche();
-		int forz = caratteristiche.get(0);
-		forz = forz + 2;
-		caratteristiche.set(0, forz);
-		int car = caratteristiche.get(5);
-		car = car + 1;
-		caratteristiche.set(5, car);
+		for(int i = 0; i < caratteristiche.size(); i++) {
+		    caratteristiche.set(i, caratteristiche.get(i) + 1);
+		} 
 		p.setCaratteristiche(caratteristiche);
 		//settaggio della taglia
 		p.setTaglia("media");
 		//settaggio altezza media
-		p.setAltezza(180);
+		p.setAltezza(165);
 		//settaggio velocita
 		p.setVelocita(9.0);
-		// settaggio dei privilegi
 		
 	}
 
@@ -29,29 +27,20 @@ public class Dragonide implements Razza {
 	public List<Linguaggio> linguaggiPossibili() {
 		List<Linguaggio> linguaggi = new ArrayList<Linguaggio>();
 		linguaggi.add(Linguaggio.COMUNE);
-		linguaggi.add(Linguaggio.DRACONICO);
+		linguaggi.add(Linguaggio.CUSTOM);
 		return linguaggi;
 	}
 
 	@Override
 	public Boolean setLinguaggi(List<Linguaggio> lista, Personaggio p) {
-		if (lista.contains(Linguaggio.COMUNE) && lista.contains(Linguaggio.DRACONICO) && lista.size()==2) {
-			p.linguaggi.addAll(lista);
+		if (lista.contains(Linguaggio.COMUNE) && lista.size()==2 && !lista.contains(Linguaggio.CUSTOM)) {
+			List<Linguaggio> list=p.getLinguaggi();
+			list.addAll(lista);
+			p.setLinguaggi(list);
 			return true;
-			}else 
+		}
+		else 
 			return false;
-	}
-
-	
-	public Boolean setModifiche(List<Integer> cararatt, Personaggio p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-	public List<String> modifichePossibili() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

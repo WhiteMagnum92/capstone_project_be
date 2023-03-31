@@ -1,7 +1,9 @@
-package com.capstone_be.entities;
+package com.capstone_be.utilities;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.capstone_be.entities.Personaggio;
 
 public class Mezzorco implements Razza {
 
@@ -48,9 +50,12 @@ public class Mezzorco implements Razza {
 	@Override
 	public Boolean setLinguaggi(List<Linguaggio> lista, Personaggio p) {
 		if (lista.contains(Linguaggio.COMUNE) && lista.contains(Linguaggio.ORCHESCO) && lista.size()==2) {
-			p.linguaggi.addAll(lista);
+			List<Linguaggio> list=p.getLinguaggi();
+			list.addAll(lista);
+			p.setLinguaggi(list);
 			return true;
-			}else 
+		}
+		else 
 			return false;
 	}
 

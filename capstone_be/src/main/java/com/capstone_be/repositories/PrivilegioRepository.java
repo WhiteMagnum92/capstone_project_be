@@ -9,6 +9,6 @@ import com.capstone_be.entities.Privilegio;
 
 public interface PrivilegioRepository extends JpaRepository<Privilegio, Integer> {
 	
-	Optional<Privilegio> findByName(String nome);
+	Optional<Privilegio> findByName(String name);
 
 }

@@ -1,4 +1,4 @@
-package com.capstone_be.entities;
+package com.capstone_be.utilities;
 
 public enum Linguaggio {
 	

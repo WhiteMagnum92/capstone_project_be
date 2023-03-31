@@ -11,8 +11,8 @@ import com.capstone_be.entities.Personaggio;
 
 public interface PersonaggioRepository extends JpaRepository<Personaggio, Integer> {
 
-	Optional<Personaggio> findByName(String nome);
-	List<Personaggio> findByUser(User u);
+	Optional<Personaggio> findByName(String name);
+	//List<Personaggio> findByUser(User u);
 	
 	
 }

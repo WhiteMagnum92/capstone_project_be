@@ -8,6 +8,6 @@ import com.capstone_be.entities.Abilita;
 
 public interface AbilitaRepository extends JpaRepository<Abilita, Integer> {
 	
-	Optional<Abilita> findByName(String nome);
+	Optional<Abilita> findByName(String name);
 
 }

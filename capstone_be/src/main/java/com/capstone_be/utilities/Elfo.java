@@ -1,7 +1,9 @@
-package com.capstone_be.entities;
+package com.capstone_be.utilities;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.capstone_be.entities.Personaggio;
 
 public class Elfo implements Razza {
 
@@ -45,10 +47,13 @@ public class Elfo implements Razza {
 	@Override
 	public Boolean setLinguaggi(List<Linguaggio> lista, Personaggio p) {
 		if (lista.contains(Linguaggio.COMUNE) && lista.contains(Linguaggio.ELFICO) && lista.size()==3 && !lista.contains(Linguaggio.CUSTOM)) {
-		p.linguaggi.addAll(lista);
-		return true;
-		}else 
-		return false;
+			List<Linguaggio> list=p.getLinguaggi();
+			list.addAll(lista);
+			p.setLinguaggi(list);
+			return true;
+		}
+		else 
+			return false;
 	}
 
 	@Override

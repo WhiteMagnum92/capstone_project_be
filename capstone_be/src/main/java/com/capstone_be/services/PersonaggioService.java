@@ -3,6 +3,7 @@ package com.capstone_be.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.SpringBoot_SpringSecurity.entity.User;
 import com.capstone_be.entities.Personaggio;
@@ -11,6 +12,7 @@ import com.capstone_be.repositories.PrivilegioRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
+@Service
 public class PersonaggioService {
 	
 	@Autowired
@@ -31,9 +33,10 @@ public class PersonaggioService {
 				.orElseThrow(() -> new EntityNotFoundException("Personaggio non trovato!!!"));
 		
 	}
+	/*
 	public List<Personaggio> findByUser(User u) {
 		return repo.findByUser(u);
 				
-	}
+	}*/
 
 }

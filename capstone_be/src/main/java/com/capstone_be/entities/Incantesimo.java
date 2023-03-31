@@ -19,7 +19,7 @@ public class Incantesimo {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	Integer id;
-	String nome;
+	String name;
 	Integer lvl;
 	List<String> classe;
 	
