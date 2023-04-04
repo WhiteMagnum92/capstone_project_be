@@ -27,13 +27,11 @@ public class Stregone implements Classe {
 		genval.put("Trucchetti", 4);
 		genval.put("Incantesimi", 2);
 		PrivilegioService serv= new PrivilegioService();
-		Privilegio priv=serv.findByName("Ispirazione Bardica");
-		Privilegio priv1=serv.findByName("Armature leggere");
-		Privilegio priv2=serv.findByName("Armi semplici");
+		Privilegio priv=serv.findByName("Origine stregonesca");
+		Privilegio priv1=serv.findByName("Armi semplici");
 		List<Privilegio> oldPriv=p.getPrivilegi();
 		oldPriv.add(priv);
 		oldPriv.add(priv1);
-		oldPriv.add(priv2);
 		p.setPrivilegi(oldPriv);
 		p.setGenericValue(genval);
 		

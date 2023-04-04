@@ -21,7 +21,7 @@ public class Monaco implements Classe {
 		p.setPf(8+modCos);
 		p.setCompetenza(2);
 		PrivilegioService serv= new PrivilegioService();
-		Privilegio priv=serv.findByName("Difesa senza armatura");
+		Privilegio priv=serv.findByName("Difesa senza armatura (Monaco)");
 		Privilegio priv1=serv.findByName("Arti marziali");
 		Privilegio priv2=serv.findByName("Armi semplici");
 		List<Privilegio> oldPriv=p.getPrivilegi();

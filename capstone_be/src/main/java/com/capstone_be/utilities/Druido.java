@@ -31,11 +31,13 @@ public class Druido implements Classe {
 		Privilegio priv1=serv.findByName("Armature leggere");
 		Privilegio priv2=serv.findByName("Armature medie");
 		Privilegio priv3=serv.findByName("Armi semplici");
+		Privilegio priv4=serv.findByName("Druidico");
 		List<Privilegio> oldPriv=p.getPrivilegi();
 		oldPriv.add(priv);
 		oldPriv.add(priv1);
 		oldPriv.add(priv2);
 		oldPriv.add(priv3);
+		oldPriv.add(priv4);
 		p.setPrivilegi(oldPriv);
 		p.setGenericValue(genval);
 		List<Linguaggio> list=p.getLinguaggi();

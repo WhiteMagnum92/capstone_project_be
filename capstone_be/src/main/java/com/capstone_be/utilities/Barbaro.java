@@ -17,20 +17,6 @@ public class Barbaro implements Classe {
 
 	@Override
 	public void applicaCambiamenti(Personaggio p) {
-		/*
-		 * Privilegio p1 = new Privilegio("Ira",
-		 * "Se non indossa un'armatura pesante: Vantaggio a prove di forza e TS basati su forza, "
-		 * + "Bonus ai danni quando utilizza un'arma da mischia, " +
-		 * "resistenza ai danni contundenti, perforanti e taglienti. " +
-		 * "Non puo lanciare incantesimi o concentrarsi durante l'ira. l'ira dura 1 minuto. "
-		 * +
-		 * "Finisce prima se diventa incosciente o se finisce il turno senza aver attaccato una creatura ostile o se non ha subito danno dal suo ultimo turno. "
-		 * + "Puo terminare l'ira con un'azione bonus. "); Privilegio p2 = new
-		 * Privilegio("Difesa senza armatura", "Finche non indossa armatura, " +
-		 * "la CA diventa 10 + modificatore di destrezza + modificatore di costituzione. Puo utilizzare scudi."
-		 * ); List<Privilegio> privilegi = p.getPrivilegi(); privilegi.add(p1);
-		 * privilegi.add(p2); p.setPrivilegi(privilegi);
-		 */
 		p.setDv("1d12");
 		List<Integer> carat = p.getCaratteristiche();
 		Integer modCos= (carat.get(2)-10)/2;
@@ -46,12 +32,16 @@ public class Barbaro implements Classe {
 		Privilegio priv2=serv.findByName("Armature medie");
 		Privilegio priv3=serv.findByName("Armi semplici");
 		Privilegio priv4=serv.findByName("Armi da guerra");
+		Privilegio priv5=serv.findByName("Ira");
+		Privilegio priv6=serv.findByName("Difesa senza armatura");
 		List<Privilegio> oldPriv=p.getPrivilegi();
 		oldPriv.add(priv);
 		oldPriv.add(priv1);
 		oldPriv.add(priv2);
 		oldPriv.add(priv3);
 		oldPriv.add(priv4);
+		oldPriv.add(priv5);
+		oldPriv.add(priv6);
 		p.setPrivilegi(oldPriv);
 		p.setGenericValue(genval);
 		
