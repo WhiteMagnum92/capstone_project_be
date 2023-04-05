@@ -33,6 +33,11 @@ public class PersonaggioService {
 				.orElseThrow(() -> new EntityNotFoundException("Personaggio non trovato!!!"));
 		
 	}
+	
+	public void save(Personaggio p) {
+		repo.save(p);
+	}
+	
 	/*
 	public List<Personaggio> findByUser(User u) {
 		return repo.findByUser(u);

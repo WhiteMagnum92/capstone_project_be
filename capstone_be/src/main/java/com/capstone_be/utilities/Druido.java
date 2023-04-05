@@ -23,9 +23,9 @@ public class Druido implements Classe {
 		Integer modCos= (carat.get(2)-10)/2;
 		p.setPf(8+modCos);
 		p.setCompetenza(2);
-		Map<String, Integer> genval= p.getGenericValue();
-		genval.put("Trucchetti", 2);
-		genval.put("Incantesimi", 2);
+		Map<String, String> genval= p.getGenericValue();
+		genval.put("Trucchetti", "2");
+		genval.put("Incantesimi", "2");
 		PrivilegioService serv= new PrivilegioService();
 		Privilegio priv=serv.findByName("Scudi");
 		Privilegio priv1=serv.findByName("Armature leggere");

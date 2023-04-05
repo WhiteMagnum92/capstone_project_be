@@ -31,9 +31,9 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor
 @Data
 public class Personaggio {
-	
+
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
 	@Column
 	List<Integer> caratteristiche;
@@ -50,10 +50,7 @@ public class Personaggio {
 	@Column
 	List<String> ts;
 	@ManyToMany
-	@JoinTable(
-		    name = "personaggio_abilita",
-		    joinColumns = @JoinColumn(name = "personaggio_id", referencedColumnName = "id"),
-		    inverseJoinColumns = @JoinColumn(name = "abilita_id", referencedColumnName = "id"))
+	@JoinTable(name = "personaggio_abilita", joinColumns = @JoinColumn(name = "personaggio_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "abilita_id", referencedColumnName = "id"))
 	List<Abilita> abilita;
 	@Column
 	String dv;
@@ -85,19 +82,15 @@ public class Personaggio {
 	List<Incantesimo> incantesimi;
 	@Column
 	String classe;
-	
-	//@ManyToOne(fetch = FetchType.LAZY)
-    //@JoinColumn(name = "id_user")
-	//@Column
-	//Integer user;
+
+	// @ManyToOne(fetch = FetchType.LAZY)
+	// @JoinColumn(name = "id_user")
+	// @Column
+	// Integer user;
 	@ElementCollection
-	@CollectionTable(name="genericvalue", joinColumns=@JoinColumn(name="id"))
-	@MapKeyColumn(name="key")
-	@Column(name="value", columnDefinition="integer")
-	Map<String, Integer> genericValue;
-	
-	public void aumentaLivello() {}
-	
+	@CollectionTable(name = "genericvalue", joinColumns = @JoinColumn(name = "id"))
+	@MapKeyColumn(name = "key")
+	@Column(name = "value")
+	Map<String, String> genericValue;
+
 }
-
-

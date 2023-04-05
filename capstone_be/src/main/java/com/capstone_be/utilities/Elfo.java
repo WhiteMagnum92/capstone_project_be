@@ -27,7 +27,7 @@ public class Elfo implements Razza {
 			// settaggio dei privilegi
 			PrivilegioService serv= new PrivilegioService();
 			Privilegio priv=serv.findByName("Scurovisione");
-			Privilegio priv1=serv.findByName("Sensi Acuti");
+			Privilegio priv1=serv.findByName("Sensi acuti");
 			Privilegio priv2=serv.findByName("Retaggio fatato");
 			Privilegio priv3=serv.findByName("Trance");
 			List<Privilegio> oldPriv=p.getPrivilegi();
@@ -61,18 +61,20 @@ public class Elfo implements Razza {
 	}
 
 	@Override
-	public Boolean setModificheCaratteristiche(List<Integer> cara, Personaggio p) {
+	public Boolean setModifiche(List<List<String>> risposte, Personaggio p) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<String> modificheCaratteristichePossibili() {
+	public List<Domanda> modificheNecessarie() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 		
-	}
+}
 	
 
 

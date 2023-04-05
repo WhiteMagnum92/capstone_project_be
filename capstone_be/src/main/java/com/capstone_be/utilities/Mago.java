@@ -23,9 +23,9 @@ public class Mago implements Classe {
 		Integer modCos= (carat.get(2)-10)/2;
 		p.setPf(6+modCos);
 		p.setCompetenza(2);
-		Map<String, Integer> genval= p.getGenericValue();
-		genval.put("Trucchetti", 3);
-		genval.put("Incantesimi", 2);
+		Map<String, String> genval= p.getGenericValue();
+		genval.put("Trucchetti", "3");
+		genval.put("Incantesimi", "2");
 		PrivilegioService serv= new PrivilegioService();
 		Privilegio priv=serv.findByName("Armi semplici");
 		Privilegio priv1=serv.findByName("Recupero arcano");

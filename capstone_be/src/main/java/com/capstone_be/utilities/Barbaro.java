@@ -22,9 +22,9 @@ public class Barbaro implements Classe {
 		Integer modCos= (carat.get(2)-10)/2;
 		p.setPf(12+modCos);
 		p.setCompetenza(2);
-		Map<String, Integer> genval= p.getGenericValue();
-		genval.put("Ira", 2);
-		genval.put("Danni Ira", 2);
+		Map<String, String> genval= p.getGenericValue();
+		genval.put("Ira", "2");
+		genval.put("Danni Ira", "2");
 		p.setGenericValue(genval);
 		PrivilegioService serv= new PrivilegioService();
 		Privilegio priv=serv.findByName("Scudi");
@@ -43,7 +43,6 @@ public class Barbaro implements Classe {
 		oldPriv.add(priv5);
 		oldPriv.add(priv6);
 		p.setPrivilegi(oldPriv);
-		p.setGenericValue(genval);
 		
 	}
 

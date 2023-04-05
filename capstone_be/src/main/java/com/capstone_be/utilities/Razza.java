@@ -12,8 +12,7 @@ public interface Razza {
 	public abstract void applicaCambiamenti(Personaggio p);
 	public abstract List<Linguaggio> linguaggiPossibili();
 	public abstract Boolean setLinguaggi(List<Linguaggio> lista, Personaggio p);
-	public abstract Boolean setModificheCaratteristiche(List<Integer> cararatt, Personaggio p);// TODO ci pensiamo
-	public abstract List<String>modificheCaratteristichePossibili();//TODO ci pensiamo
-	
+	public abstract Boolean setModifiche(List<List<String>> risposte, Personaggio p);
+	public abstract List<Domanda>modificheNecessarie();
 }
  	

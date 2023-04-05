@@ -54,15 +54,16 @@ public class Gnomo implements Razza {
 	}
 
 	@Override
-	public Boolean setModificheCaratteristiche(List<Integer> cararatt, Personaggio p) {
+	public Boolean setModifiche(List<List<String>> risposte, Personaggio p) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<String> modificheCaratteristichePossibili() {
+	public List<Domanda> modificheNecessarie() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }
