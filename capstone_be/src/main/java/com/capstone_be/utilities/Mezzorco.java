@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.capstone_be.entities.Personaggio;
+import com.capstone_be.entities.Privilegio;
+import com.capstone_be.services.PrivilegioService;
 
 public class Mezzorco implements Razza {
 
@@ -23,19 +25,18 @@ public class Mezzorco implements Razza {
 		p.setAltezza(180);
 		//settaggio velocita
 		p.setVelocita(9.0);
-		
-		/*
-		 * Privilegio p1 = new Privilegio("Scurovisione",
-		 * "Possibilita di vedere fino a 18m al buio"); Privilegio p2 = new
-		 * Privilegio("Minaccioso", "competenza nell'abilita intimidire"); Privilegio p3
-		 * = new Privilegio("Tenacia Implacabile",
-		 * "Quando un mezzorco scende a 0 PF ma non viene ucciso sul colpo, puo decidere di rimanere a 1 PF. Non puo utlizzare questa capacita finche non completa un riposto lungo"
-		 * ); Privilegio p4 = new Privilegio("Attacchi Selvaggi",
-		 * "Quando mette a segno un colpo critico con un'arma da mischia. puo tirare un dado dell'arma aggiuntivo quando determina i danni extra del colpo critico"
-		 * ); List<Privilegio> privilegi = p.getPrivilegi(); privilegi.add(p1);
-		 * privilegi.add(p2); privilegi.add(p3); privilegi.add(p4);
-		 * p.setPrivilegi(privilegi);
-		 */
+		// settaggio dei privilegi
+		PrivilegioService serv= new PrivilegioService();
+		Privilegio priv=serv.findByName("Scurovisione");
+		Privilegio priv1=serv.findByName("Minaccioso");
+		Privilegio priv2=serv.findByName("Tenacia implacabile");
+		Privilegio priv3=serv.findByName("Attacchi selvaggi");
+		List<Privilegio> oldPriv=p.getPrivilegi();
+		oldPriv.add(priv);
+		oldPriv.add(priv1);
+		oldPriv.add(priv2);
+		oldPriv.add(priv3);
+		p.setPrivilegi(oldPriv);
 		
 	}
 

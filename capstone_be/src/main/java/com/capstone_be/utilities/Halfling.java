@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.capstone_be.entities.Personaggio;
+import com.capstone_be.entities.Privilegio;
+import com.capstone_be.services.PrivilegioService;
 
 public class Halfling implements Razza {
 
@@ -22,16 +24,15 @@ public class Halfling implements Razza {
 					//settaggio velocita
 					p.setVelocita(7.5);
 					// settaggio dei privilegi
-					/*
-					 * Privilegio p1 = new Privilegio("Fortunato",
-					 * "Quando ottiene 1 a un tiro per colpire, a una prova di caratteristica o a un tiro salvezza, puo ripetere il tiro del dado e deve usare il nuovo risultato"
-					 * ); Privilegio p2 = new Privilegio("Coraggioso",
-					 * "Vantaggio ai TS per non essere spaventato"); Privilegio p3 = new
-					 * Privilegio("Agilita Halfling",
-					 * "Puo muoversi attraverso gli spazi di qualsiasi creatura piu grande");
-					 * List<Privilegio> privilegi = p.getPrivilegi(); privilegi.add(p1);
-					 * privilegi.add(p2); privilegi.add(p3); p.setPrivilegi(privilegi);
-					 */
+					PrivilegioService serv= new PrivilegioService();
+					Privilegio priv=serv.findByName("Frotunato");
+					Privilegio priv1=serv.findByName("Coraggioso");
+					Privilegio priv2=serv.findByName("Agilità halfling");
+					List<Privilegio> oldPriv=p.getPrivilegi();
+					oldPriv.add(priv);
+					oldPriv.add(priv1);
+					oldPriv.add(priv2);
+					p.setPrivilegi(oldPriv);
 		
 	}
 

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.capstone_be.entities.Personaggio;
+import com.capstone_be.entities.Privilegio;
+import com.capstone_be.services.PrivilegioService;
 
 public class Tiefling implements Razza {
 
@@ -24,15 +26,15 @@ public class Tiefling implements Razza {
 		//settaggio velocita
 		p.setVelocita(9.0);
 		// settaggio dei privilegi
-		/*
-		 * Privilegio p1 = new Privilegio("Scurovisione",
-		 * "Possibilita di vedere fino a 18m al buio"); Privilegio p2 = new
-		 * Privilegio("Resistenza Infernale", "Resistenza ai danni da fuoco");
-		 * Privilegio p3 = new Privilegio("Eredita Infernale",
-		 * "Conoscete il trucchetto taumaturgia. Una volta raggiunto il 3° livello, potete lanciare l'incantesimo rimprovero diabolico una volta al giorno come incantesimo di 2° livello. Una volta raggiunto il 5° livello, potete anche lanciare l'incantesimo oscurità una volta al giorno. Il Carisma è la caratteristica chiave per questi incantesimi. "
-		 * ); List<Privilegio> privilegi = p.getPrivilegi(); privilegi.add(p1);
-		 * privilegi.add(p2); privilegi.add(p3); p.setPrivilegi(privilegi);
-		 */
+		PrivilegioService serv= new PrivilegioService();
+		Privilegio priv=serv.findByName("Scurovisione");
+		Privilegio priv1=serv.findByName("Resistenza infernale");
+		Privilegio priv2=serv.findByName("Eredità infernale");
+		List<Privilegio> oldPriv=p.getPrivilegi();
+		oldPriv.add(priv);
+		oldPriv.add(priv1);
+		oldPriv.add(priv2);
+		p.setPrivilegi(oldPriv);
 	}
 
 	@Override

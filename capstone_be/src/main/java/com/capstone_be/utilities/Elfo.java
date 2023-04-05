@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.capstone_be.entities.Personaggio;
+import com.capstone_be.entities.Privilegio;
+import com.capstone_be.services.PrivilegioService;
 
 public class Elfo implements Razza {
 
@@ -23,15 +25,17 @@ public class Elfo implements Razza {
 			//settaggio velocita
 			p.setVelocita(9.0);
 			// settaggio dei privilegi
-			/*
-			 * Privilegio p1 = new Privilegio("Scurovisione",
-			 * "Possibilita di vedere fino a 18m al buio"); Privilegio p2 = new
-			 * Privilegio("Trance", "Anziche dormire 8 ore, trance per 4"); Privilegio p3 =
-			 * new Privilegio("Retaggio Fatato",
-			 * "Vantaggio TS contro affascinamento e non puo essere addormentato magicamente"
-			 * ); List<Privilegio> privilegi = p.getPrivilegi(); privilegi.add(p1);
-			 * privilegi.add(p2); privilegi.add(p3); p.setPrivilegi(privilegi);
-			 */
+			PrivilegioService serv= new PrivilegioService();
+			Privilegio priv=serv.findByName("Scurovisione");
+			Privilegio priv1=serv.findByName("Sensi Acuti");
+			Privilegio priv2=serv.findByName("Retaggio fatato");
+			Privilegio priv3=serv.findByName("Trance");
+			List<Privilegio> oldPriv=p.getPrivilegi();
+			oldPriv.add(priv);
+			oldPriv.add(priv1);
+			oldPriv.add(priv2);
+			oldPriv.add(priv3);
+			p.setPrivilegi(oldPriv);
 			 
 		}
 

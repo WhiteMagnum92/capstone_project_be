@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.capstone_be.entities.Personaggio;
+import com.capstone_be.entities.Privilegio;
+import com.capstone_be.services.PrivilegioService;
 
 public class Nano implements Razza {
 
@@ -22,21 +24,15 @@ public class Nano implements Razza {
 					//settaggio velocita
 					p.setVelocita(7.5);
 					// settaggio dei privilegi
-					/*
-					 * Privilegio p1 = new Privilegio("Scurovisione",
-					 * "Possibilita di vedere fino a 18m al buio"); Privilegio p2 = new
-					 * Privilegio("Resilienza Nanica",
-					 * "Vantaggio ai TS veleno e di resistenza ai danni da veleno"); Privilegio p3 =
-					 * new Privilegio("Addestramento da Combattimento Nanico",
-					 * "Compentenza in asce, asce da battaglia, martelli da guerra e martelli leggeri"
-					 * ); Privilegio p4 = new Privilegio("Competenza negli strumenti",
-					 * "Compentenza in un gruppo di strumenti da artigiano a sua scelta");
-					 * Privilegio p5 = new Privilegio("Esperto Minatore",
-					 * "Ognivolta che un nano effetua una prova di intelligenza (Storia) relativa all'origine di una struttura in pietra, aggiunge il doppio del suo bonus di competenza"
-					 * ); List<Privilegio> privilegi = p.getPrivilegi(); privilegi.add(p1);
-					 * privilegi.add(p2); privilegi.add(p3); privilegi.add(p4); privilegi.add(p5);
-					 * p.setPrivilegi(privilegi);
-					 */
+					PrivilegioService serv= new PrivilegioService();
+					Privilegio priv=serv.findByName("Scurovisione");
+					Privilegio priv1=serv.findByName("Resilienza nanica");
+					Privilegio priv2=serv.findByName("Esperto minatore");
+					List<Privilegio> oldPriv=p.getPrivilegi();
+					oldPriv.add(priv);
+					oldPriv.add(priv1);
+					oldPriv.add(priv2);
+					p.setPrivilegi(oldPriv);
 		
 	}
 

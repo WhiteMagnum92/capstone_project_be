@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.capstone_be.entities.Personaggio;
+import com.capstone_be.entities.Privilegio;
+import com.capstone_be.services.PrivilegioService;
 
 public class Gnomo implements Razza {
 
@@ -21,14 +23,13 @@ public class Gnomo implements Razza {
 		//settaggio velocita
 		p.setVelocita(7.5);
 		// settaggio dei privilegi
-		/*
-		 * Privilegio p1 = new Privilegio("Scurovisione",
-		 * "Possibilita di vedere fino a 18m al buio"); Privilegio p2 = new
-		 * Privilegio("Astuzia Gnomesca",
-		 * "Vantaggio ai TS su intelligenza, saggezza, carisma contro la magia");
-		 * List<Privilegio> privilegi = p.getPrivilegi(); privilegi.add(p1);
-		 * privilegi.add(p2); p.setPrivilegi(privilegi);
-		 */
+		PrivilegioService serv= new PrivilegioService();
+		Privilegio priv=serv.findByName("Scurovisione");
+		Privilegio priv1=serv.findByName("Astuzia gnomesca");
+		List<Privilegio> oldPriv=p.getPrivilegi();
+		oldPriv.add(priv);
+		oldPriv.add(priv1);
+		p.setPrivilegi(oldPriv);
 		
 	}
 

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.capstone_be.entities.Personaggio;
+import com.capstone_be.entities.Privilegio;
+import com.capstone_be.services.PrivilegioService;
 
 public class Dragonide implements Razza {
 
@@ -24,6 +26,16 @@ public class Dragonide implements Razza {
 		//settaggio velocita
 		p.setVelocita(9.0);
 		// settaggio dei privilegi
+		PrivilegioService serv= new PrivilegioService();
+		Privilegio priv=serv.findByName("Discendenza draconica");
+		Privilegio priv1=serv.findByName("Arma a soffio");
+		Privilegio priv2=serv.findByName("Resistenza ai danni");
+		List<Privilegio> oldPriv=p.getPrivilegi();
+		oldPriv.add(priv);
+		oldPriv.add(priv1);
+		oldPriv.add(priv2);
+		p.setPrivilegi(oldPriv);
+		
 		
 	}
 
