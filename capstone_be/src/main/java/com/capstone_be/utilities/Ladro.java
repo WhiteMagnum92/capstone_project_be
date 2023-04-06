@@ -59,13 +59,21 @@ public class Ladro implements Classe {
 
 	@Override
 	public Pair<Integer, List<Incantesimo>> incantesimiPossibili(Integer liv) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Boolean setIncantesimi(Personaggio p, List<Incantesimo> lista) {
-		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean setModifiche(List<List<String>> risposte, Personaggio p) {
+		return null;
+	}
+
+	@Override
+	public List<Domanda> modificheNecessarie() {
 		return null;
 	}
 

@@ -36,7 +36,6 @@ public class Warlock implements Classe {
 		oldPriv.add(priv2);
 		p.setPrivilegi(oldPriv);
 		p.setGenericValue(genval);
-		
 	}
 
 	@Override
@@ -51,7 +50,6 @@ public class Warlock implements Classe {
 		lista.add(serv.findByName("Natura"));
 		lista.add(serv.findByName("Arcano"));
 		lista.add(serv.findByName("Storia"));
-		
 		Pair<Integer,List<Abilita>> result =Pair.of(num, lista);
 		return result;
 	}
@@ -59,7 +57,6 @@ public class Warlock implements Classe {
 	@Override
 	public Boolean setAbilita(Personaggio p, List<Abilita> lista) {
 		AbilitaService serv= new AbilitaService();
-		
 		List<Abilita> listaDefault= new ArrayList<Abilita>();
 		listaDefault.add(serv.findByName("Indagare"));
 		listaDefault.add(serv.findByName("Inganno"));
@@ -78,7 +75,6 @@ public class Warlock implements Classe {
 
 	@Override
 	public Pair<Integer, List<Incantesimo>> incantesimiPossibili(Integer liv) {
-		
 		if(liv==1||liv==0) {
 			Integer num=2;
 			 IncantesimiService serv= new IncantesimiService();
@@ -87,7 +83,7 @@ public class Warlock implements Classe {
 			Pair<Integer,List<Incantesimo>> result =Pair.of(num, lista);
 			return result;
 		}
-		else{
+		else {
 			Pair<Integer,List<Incantesimo>> result =Pair.of(0, null);
 			return result;
 		}
@@ -95,14 +91,12 @@ public class Warlock implements Classe {
 
 	@Override
 	public Boolean setIncantesimi(Personaggio p, List<Incantesimo> lista) {
-		
 		Integer lvl= lista.get(0).getLvl();
 		if(lista.stream().anyMatch(inc->inc.getLvl()!=lvl))
 			return false;
 		IncantesimiService serv= new IncantesimiService();
 		List <Incantesimo> listaWarlock = serv.getByLvl(lvl).stream().filter(inc->inc.getClasse().contains("Warlock")).toList();
-		for( Incantesimo inc : lista) 
-		{
+		for( Incantesimo inc : lista) {
 			if(!listaWarlock.contains(inc))
 				return false;
 		} 
@@ -110,6 +104,35 @@ public class Warlock implements Classe {
 		oldList.addAll(lista);
 		p.setIncantesimi(oldList);
 		return true;
+	}
+
+	@Override
+	public Boolean setModifiche(List<List<String>> risposte, Personaggio p) {
+		List<String> possibiliRisposte = new ArrayList<String>();
+		possibiliRisposte.add("Signore fatato");
+		possibiliRisposte.add("Immondo");
+		possibiliRisposte.add("Grande antico");
+		if (risposte == null || risposte.size()!=1 || risposte.get(0).size()!=1 || !possibiliRisposte.contains(risposte.get(0).get(0)))
+			return false;
+		String ris = risposte.get(0).get(0);
+		Map<String, String> mappa = p.getGenericValue();
+		mappa.put("Patrono ultraterreno", ris);
+		p.setGenericValue(mappa);
+		return true;
+	}
+
+	@Override
+	public List<Domanda> modificheNecessarie() {
+		List<Domanda> res = new ArrayList<Domanda>();
+		Domanda d = new Domanda();
+		d.domanda = "Scegliere un patrono ultraterreno";
+		d.numeroRisposte = 1;
+		d.possibiliRisposte = new ArrayList<String>();
+		d.possibiliRisposte.add("Signore fatato");
+		d.possibiliRisposte.add("Immondo");
+		d.possibiliRisposte.add("Grande antico");
+		res.add(d);
+		return res;
 	}
 
 }

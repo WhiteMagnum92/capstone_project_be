@@ -39,7 +39,6 @@ public class Paladino implements Classe {
 		oldPriv.add(priv6);
 		oldPriv.add(priv7);
 		p.setPrivilegi(oldPriv);
-		
 	}
 
 	@Override
@@ -48,7 +47,6 @@ public class Paladino implements Classe {
 		AbilitaService serv= new AbilitaService();
 		Integer num=2;
 		List<Abilita> lista=serv.getAll();
-		
 		Pair<Integer,List<Abilita>> result =Pair.of(num, lista);
 		return result;
 	}
@@ -65,13 +63,21 @@ public class Paladino implements Classe {
 
 	@Override
 	public Pair<Integer, List<Incantesimo>> incantesimiPossibili(Integer liv) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Boolean setIncantesimi(Personaggio p, List<Incantesimo> lista) {
-		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean setModifiche(List<List<String>> risposte, Personaggio p) {
+		return null;
+	}
+
+	@Override
+	public List<Domanda> modificheNecessarie() {
 		return null;
 	}
 

@@ -115,7 +115,15 @@ public class Mago implements Classe {
 		return true;
 	}
 
+	@Override
+	public Boolean setModifiche(List<List<String>> risposte, Personaggio p) {
+		return null;
+	}
 
+	@Override
+	public List<Domanda> modificheNecessarie() {
+		return null;
+	}
 }
 
 

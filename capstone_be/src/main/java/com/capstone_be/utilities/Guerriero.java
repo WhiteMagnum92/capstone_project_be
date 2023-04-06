@@ -1,6 +1,8 @@
 package com.capstone_be.utilities;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.util.Pair;
 
@@ -40,8 +42,6 @@ public class Guerriero implements Classe {
 		oldPriv.add(priv7);
 		p.setPrivilegi(oldPriv);
 		
-		
-		
 	}
 
 	@Override
@@ -67,14 +67,54 @@ public class Guerriero implements Classe {
 
 	@Override
 	public Pair<Integer, List<Incantesimo>> incantesimiPossibili(Integer liv) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Boolean setIncantesimi(Personaggio p, List<Incantesimo> lista) {
-		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Boolean setModifiche(List<List<String>> risposte, Personaggio p) {
+		List<String> possibiliRisposte = new ArrayList<String>();
+		possibiliRisposte.add("Combattere con armi possenti");
+		possibiliRisposte.add("Combattere con due armi");
+		possibiliRisposte.add("Difesa");
+		possibiliRisposte.add("Duellare");
+		possibiliRisposte.add("Protezione");
+		possibiliRisposte.add("Tiro");
+		if (risposte == null || risposte.size()!=1 || risposte.get(0).size()!=1 || !possibiliRisposte.contains(risposte.get(0).get(0)))
+			return false;
+		String ris = risposte.get(0).get(0);
+		Map<String, String> mappa = p.getGenericValue();
+		mappa.put("Stile di combattimento", ris);
+		p.setGenericValue(mappa);
+		return true;
+	}
+
+	@Override
+	public List<Domanda> modificheNecessarie() {
+		List<Domanda> res = new ArrayList<Domanda>();
+		Domanda d = new Domanda();
+		d.domanda = "Scegliere uno stile di combattimento";
+		d.numeroRisposte = 1;
+		d.possibiliRisposte = new ArrayList<String>();
+		d.descrizioni = new ArrayList<String>();
+		d.possibiliRisposte.add("Combattere con armi possenti");
+		d.possibiliRisposte.add("Combattere con due armi");
+		d.possibiliRisposte.add("Difesa");
+		d.possibiliRisposte.add("Duellare");
+		d.possibiliRisposte.add("Protezione");
+		d.possibiliRisposte.add("Tiro");
+		d.descrizioni.add("Quando si attacca con un'arma a due mani se in un dado dei danni si ottiene 1 o 2 è possibile ritirare una volta questo dado.");
+		d.descrizioni.add("Quando si attacca con due armi si applica il modificatore di caratteristica anche sull'arma secondaria.");
+		d.descrizioni.add("Finchè si indossa un'armatura, +1 CA.");
+		d.descrizioni.add("Quando si attacca con un'arma a una mano e non impugna altre armi, +2 danni con quell'arma.");
+		d.descrizioni.add("Se il guerriero impugna uno scudo e un'avversario in vista attacca un alleato entro 1,5 metri dal guerriero, può usare la sua reazione per applicare svantaggio all'attacco del nemico.");
+		d.descrizioni.add("+2 tiro per colpire con armi a distanza");
+		res.add(d);
+		return res;
 	}
 
 	

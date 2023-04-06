@@ -18,5 +18,6 @@ public interface Classe {
 	public abstract Boolean setAbilita(Personaggio p, List<Abilita> lista);
 	public abstract Pair<Integer,List<Incantesimo>> incantesimiPossibili(Integer liv);
 	public abstract Boolean setIncantesimi(Personaggio p, List<Incantesimo> lista);
-
+	public abstract Boolean setModifiche(List<List<String>> risposte, Personaggio p);
+	public abstract List<Domanda>modificheNecessarie();
 }

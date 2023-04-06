@@ -36,9 +36,10 @@ public class CapstoneController {
 	@PostMapping(value = {"/personaggi/{id}"})
     public ResponseEntity<String> setPersonaggio(@RequestBody Personaggio p, @PathVariable Integer id){
 		personaggioService.save(p);
-		
 		return ResponseEntity.ok("Modifica salvata");
     }
+	
+	
 	
 	
 	

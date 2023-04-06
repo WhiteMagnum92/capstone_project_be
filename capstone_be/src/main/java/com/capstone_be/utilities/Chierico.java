@@ -121,4 +121,41 @@ public class Chierico implements Classe {
 		return true;
 	}
 
+	@Override
+	public Boolean setModifiche(List<List<String>> risposte, Personaggio p) {
+		List<String> possibiliRisposte = new ArrayList<String>();
+		possibiliRisposte.add("Conoscenza");
+		possibiliRisposte.add("Guerra");
+		possibiliRisposte.add("Inganno");
+		possibiliRisposte.add("Luce");
+		possibiliRisposte.add("Natura");
+		possibiliRisposte.add("Tempesta");
+		possibiliRisposte.add("Vita");
+		if (risposte == null || risposte.size()!=1 || risposte.get(0).size()!=1 || !possibiliRisposte.contains(risposte.get(0).get(0)))
+			return false;
+		String ris = risposte.get(0).get(0);
+		Map<String, String> mappa = p.getGenericValue();
+		mappa.put("Dominio divino", ris);
+		p.setGenericValue(mappa);
+		return true;
+	}
+
+	@Override
+	public List<Domanda> modificheNecessarie() {
+		List<Domanda> res = new ArrayList<Domanda>();
+		Domanda d = new Domanda();
+		d.domanda = "Scegliere un dominio divino";
+		d.numeroRisposte = 1;
+		d.possibiliRisposte = new ArrayList<String>();
+		d.possibiliRisposte.add("Conoscenza");
+		d.possibiliRisposte.add("Guerra");
+		d.possibiliRisposte.add("Inganno");
+		d.possibiliRisposte.add("Luce");
+		d.possibiliRisposte.add("Natura");
+		d.possibiliRisposte.add("Tempesta");
+		d.possibiliRisposte.add("Vita");
+		res.add(d);
+		return res;
+	}
+
 }
