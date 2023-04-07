@@ -1,0 +1,6 @@
+package com.capstone_be.configuration.entity;
+
+public enum ERole {
+	ROLE_USER,
+    ROLE_ADMIN;
+}

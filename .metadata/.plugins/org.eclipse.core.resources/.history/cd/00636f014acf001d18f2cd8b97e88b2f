@@ -1,0 +1,74 @@
+package com.capstone_be.entities;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.hibernate.validator.internal.util.privilegedactions.NewProxyInstance;
+import org.springframework.data.util.Pair;
+
+import com.capstone_be.services.IncantesimiService;
+
+public class Bardo implements Classe {
+
+	@Override
+	public void applicaCambiamenti(Personaggio p) {
+		/*
+		 * Privilegio p1 = new Privilegio("Ispirazione Bardica",
+		 * "Puo utilizzare un'azione bonus per ispirare un'altro personaggio tramite le parole o la musica. "
+		 * +
+		 * "Il personaggio ispirato dev'essere a 18m da bardo e deve essere in grado di sentirlo. "
+		 * +
+		 * "Quel personaggio guadagna un dado da ispirazione bardica che puo usare per una prova a sua scelta nei prossimi 10 minuti, "
+		 * +
+		 * "il dado puo essere speso dopo aver lanciato il d20 ma prima di sapere se l'azione e riuscita. "
+		 * + "Ogni personaggio puo avere solo un dado ispirazione alla volta." +
+		 * "Il bardo puo utilizzare questa capacita per un numero di volte pari al suo modificatore di carisma, recupera gli utilizzi dopo un riposo lungo."
+		 * ); List<Privilegio> privilegi = p.getPrivilegi(); privilegi.add(p1);
+		 * p.setPrivilegi(privilegi);
+		 */
+		p.setDv("1d8");
+		List<Integer> carat = p.getCaratteristiche();
+		Integer modCos= (carat.get(2)-10)/2;
+		p.setPf(8+modCos);
+		p.setCompetenza(2);
+		Map<String, Integer> genval= p.getGenericValue();
+		genval.put("Trucchetti", 2);
+		genval.put("Incantesimi", 4);
+		p.setGenericValue(genval);
+		
+	}
+
+	@Override
+	public List<String> abilitaPossibili() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean setAbilita() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Pair<Integer, List<Incantesimo>> incantesimiPossibili(Integer liv) {
+		
+		Integer num=2;
+		 IncantesimiService serv= new IncantesimiService();
+		 List <Incantesimo> lista = serv.getByLvl(liv).stream().filter(inc->inc.getClasse().contains("Bardo")).toList();
+		
+		Pair<Integer,List<Incantesimo>> result =Pair.of(num, lista);
+		return result;
+	}
+
+	@Override
+	public Boolean setIncantesimi(Personaggio p, List<Incantesimo> lista) {
+		//controlli se incantesimi validi
+		List<Incantesimo> oldList= p.getIncantesimi();
+		oldList.addAll(lista);
+		p.setIncantesimi(oldList);
+		return null;
+	}
+
+}

@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.SpringBoot_SpringSecurity.entity.User;
 import com.capstone_be.entities.Personaggio;
+import com.capstone_be.entities.User;
 import com.capstone_be.repositories.PersonaggioRepository;
 import com.capstone_be.repositories.PrivilegioRepository;
 

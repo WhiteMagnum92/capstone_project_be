@@ -3,7 +3,6 @@ package com.capstone_be.entities;
 import java.util.List;
 import java.util.Map;
 
-import com.SpringBoot_SpringSecurity.entity.User;
 import com.capstone_be.utilities.Classe;
 import com.capstone_be.utilities.Linguaggio;
 import com.capstone_be.utilities.Razza;
@@ -83,10 +82,9 @@ public class Personaggio {
 	@Column
 	String classe;
 
-	// @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "id_user")
-	// @Column
-	// Integer user;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_user")
+	User user;
 	@ElementCollection
 	@CollectionTable(name = "genericvalue", joinColumns = @JoinColumn(name = "id"))
 	@MapKeyColumn(name = "key")

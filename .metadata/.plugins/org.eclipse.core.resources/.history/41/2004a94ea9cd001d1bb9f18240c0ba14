@@ -1,0 +1,46 @@
+package com.capstone_be.entities;
+
+import java.util.List;
+
+import com.SpringBoot_SpringSecurity.entity.User;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class Personaggio {
+	
+	List<Integer> caratteristiche;
+	Integer ca;
+	Integer iniziativa;
+	Double velocita;
+	Integer competenza;
+	Integer pf;
+	List<String> ts;
+	List<String> abilita;
+	String dv;
+	String nome;
+	List<Integer> lv;
+	List <Razza> razza;
+	String background;
+	String allineamento;
+	String eta;
+	String taglia;
+	List<String> linguaggi;
+	Integer peso;
+	Integer altezza;
+	String capelli;
+	List<Privilegio> privilegi;
+	List<Incantesimo> incantesimi;
+	List<Classe> classi;
+	User user;
+	
+	public void aumentaLivello() {}
+	
+}
+
+

@@ -1,0 +1,14 @@
+package com.capstone_be.configuration.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.capstone_be.configuration.entity.ERole;
+import com.capstone_be.configuration.entity.Role;
+
+import java.util.Optional;
+
+public interface RoleRepository extends JpaRepository<Role, Long> {
+    
+	Optional<Role> findByRoleName(ERole roleName);
+
+}
