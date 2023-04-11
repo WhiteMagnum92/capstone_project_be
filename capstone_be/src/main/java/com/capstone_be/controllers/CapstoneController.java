@@ -14,7 +14,7 @@ import com.capstone_be.entities.Personaggio;
 import com.capstone_be.services.PersonaggioService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/pg")
 public class CapstoneController {
 	
 	private PersonaggioService personaggioService;
@@ -33,8 +33,8 @@ public class CapstoneController {
 		return ResponseEntity.ok(personaggioService.getById(id));
     }
 	
-	@PostMapping(value = {"/personaggi/{id}"})
-    public ResponseEntity<String> setPersonaggio(@RequestBody Personaggio p, @PathVariable Integer id){
+	@PostMapping(value = {"/personaggi"})
+    public ResponseEntity<String> setPersonaggio(@RequestBody Personaggio p){
 		personaggioService.save(p);
 		return ResponseEntity.ok("Modifica salvata");
     }

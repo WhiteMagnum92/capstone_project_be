@@ -8,6 +8,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -31,6 +32,8 @@ public class User {
     private String email;
     @Column(nullable = false)
     private String password;
+    @OneToMany(mappedBy = "user") // da chiedere a bumbi se corretto
+    private List<Personaggio> personaggi;
     
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(name = "users_roles",
