@@ -7,43 +7,47 @@ import com.capstone_be.entities.Personaggio;
 import com.capstone_be.entities.Privilegio;
 import com.capstone_be.services.PrivilegioService;
 
-public class Gnomo implements Razza {
+public class Tiefling implements Razza {
 
 	@Override
 	public void applicaCambiamenti(Personaggio p) {
 		List<Integer> caratteristiche = p.getCaratteristiche();
 		int inte = caratteristiche.get(3);
-		inte = inte + 2;
+		inte = inte + 1;
 		caratteristiche.set(3, inte); 
+		int car = caratteristiche.get(5);
+		car = car + 2;
+		caratteristiche.set(5, car); 
 		p.setCaratteristiche(caratteristiche);
 		//settaggio della taglia
-		p.setTaglia("piccola");
+		p.setTaglia("media");
 		//settaggio altezza media
-		p.setAltezza(100);
+		p.setAltezza(165);
 		//settaggio velocita
-		p.setVelocita(7.5);
+		p.setVelocita(9.0);
 		// settaggio dei privilegi
 		PrivilegioService serv= new PrivilegioService();
 		Privilegio priv=serv.findByName("Scurovisione");
-		Privilegio priv1=serv.findByName("Astuzia gnomesca");
+		Privilegio priv1=serv.findByName("Resistenza infernale");
+		Privilegio priv2=serv.findByName("Eredità infernale");
 		List<Privilegio> oldPriv=p.getPrivilegi();
 		oldPriv.add(priv);
 		oldPriv.add(priv1);
+		oldPriv.add(priv2);
 		p.setPrivilegi(oldPriv);
-		
 	}
 
 	@Override
 	public List<Linguaggio> linguaggiPossibili() {
 		List<Linguaggio> linguaggi = new ArrayList<Linguaggio>();
 		linguaggi.add(Linguaggio.COMUNE);
-		linguaggi.add(Linguaggio.GNOMESCO);
+		linguaggi.add(Linguaggio.INFERNALE);
 		return linguaggi;
 	}
 
 	@Override
 	public Boolean setLinguaggi(List<Linguaggio> lista, Personaggio p) {
-		if (lista.contains(Linguaggio.COMUNE) && lista.contains(Linguaggio.GNOMESCO) && lista.size()==2) {
+		if (lista.contains(Linguaggio.COMUNE) && lista.contains(Linguaggio.INFERNALE) && lista.size()==2) {
 			List<Linguaggio> list=p.getLinguaggi();
 			list.addAll(lista);
 			p.setLinguaggi(list);
@@ -52,15 +56,16 @@ public class Gnomo implements Razza {
 		else 
 			return false;
 	}
+	
 
 	@Override
-	public Boolean setModificheCaratteristiche(List<Integer> cararatt, Personaggio p) {
+	public Boolean setModifiche(List<List<String>> risposte, Personaggio p) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<String> modificheCaratteristichePossibili() {
+	public List<Domanda> modificheNecessarie() {
 		// TODO Auto-generated method stub
 		return null;
 	}

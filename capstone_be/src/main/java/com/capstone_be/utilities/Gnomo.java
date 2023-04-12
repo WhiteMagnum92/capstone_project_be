@@ -3,11 +3,18 @@ package com.capstone_be.utilities;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.capstone_be.entities.Personaggio;
 import com.capstone_be.entities.Privilegio;
 import com.capstone_be.services.PrivilegioService;
 
+@Component
 public class Gnomo implements Razza {
+	
+	@Autowired
+	PrivilegioService serv;
 
 	@Override
 	public void applicaCambiamenti(Personaggio p) {
@@ -23,7 +30,6 @@ public class Gnomo implements Razza {
 		//settaggio velocita
 		p.setVelocita(7.5);
 		// settaggio dei privilegi
-		PrivilegioService serv= new PrivilegioService();
 		Privilegio priv=serv.findByName("Scurovisione");
 		Privilegio priv1=serv.findByName("Astuzia gnomesca");
 		List<Privilegio> oldPriv=p.getPrivilegi();

@@ -4,13 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.capstone_be.entities.Abilita;
 import com.capstone_be.entities.Personaggio;
 import com.capstone_be.entities.Privilegio;
 import com.capstone_be.services.AbilitaService;
 import com.capstone_be.services.PrivilegioService;
 
+@Component
 public class Dragonide implements Razza {
+	
+	@Autowired
+	PrivilegioService serv;
 
 	@Override
 	public void applicaCambiamenti(Personaggio p) {
@@ -29,7 +36,6 @@ public class Dragonide implements Razza {
 		//settaggio velocita
 		p.setVelocita(9.0);
 		// settaggio dei privilegi
-		PrivilegioService serv= new PrivilegioService();
 		Privilegio priv=serv.findByName("Discendenza draconica");
 		Privilegio priv1=serv.findByName("Arma a soffio");
 		Privilegio priv2=serv.findByName("Resistenza ai danni");

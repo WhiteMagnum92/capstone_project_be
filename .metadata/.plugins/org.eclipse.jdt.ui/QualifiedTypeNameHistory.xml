@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
-    <fullyQualifiedTypeName name="com.capstone_be.repositories.AbilitaRepository"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.EntityNotFoundException"/>
-    <fullyQualifiedTypeName name="com.capstone_be.repositories.PersonaggioRepository"/>
-    <fullyQualifiedTypeName name="com.SpringBoot_SpringSecurity.entity.User"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.GenerationType"/>
-    <fullyQualifiedTypeName name="com.capstone_be.repositories.PrivilegioRepository"/>
-    <fullyQualifiedTypeName name="com.capstone_be.entities.Privilegio"/>
-    <fullyQualifiedTypeName name="lombok.Data"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
     <fullyQualifiedTypeName name="org.hibernate.validator.internal.util.privilegedactions.NewProxyInstance"/>
     <fullyQualifiedTypeName name="org.springframework.data.util.Pair"/>
@@ -45,4 +35,29 @@
     <fullyQualifiedTypeName name="jakarta.persistence.OneToMany"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.capstone_be.entities.Personaggio"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Mezzelfo"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Razza"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Elfo"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Gnomo"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Halfling"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Mezzorco"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Nano"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Dragonide"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Tiefling"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Barbaro"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Classe"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Bardo"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Chierico"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Druido"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Guerriero"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Ladro"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Mago"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Monaco"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Paladino"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Ranger"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Stregone"/>
+    <fullyQualifiedTypeName name="com.capstone_be.utilities.Warlock"/>
 </qualifiedTypeNameHistroy>

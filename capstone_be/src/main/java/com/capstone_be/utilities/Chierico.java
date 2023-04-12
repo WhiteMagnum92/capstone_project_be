@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Pair;
+import org.springframework.stereotype.Component;
 
 import com.capstone_be.entities.Abilita;
 import com.capstone_be.entities.Incantesimo;
@@ -14,8 +16,12 @@ import com.capstone_be.services.AbilitaService;
 import com.capstone_be.services.IncantesimiService;
 import com.capstone_be.services.PrivilegioService;
 
+@Component
 public class Chierico implements Classe {
-
+	
+	@Autowired
+	PrivilegioService serv;
+	
 	@Override
 	public void applicaCambiamenti(Personaggio p) {
 		p.setDv("1d8");
@@ -26,7 +32,6 @@ public class Chierico implements Classe {
 		Map<String, String> genval= p.getGenericValue();
 		genval.put("Trucchetti", "3");
 		genval.put("Incantesimi", "2");
-		PrivilegioService serv= new PrivilegioService();
 		Privilegio priv=serv.findByName("Scudi");
 		Privilegio priv1=serv.findByName("Armature leggere");
 		Privilegio priv2=serv.findByName("Armature medie");

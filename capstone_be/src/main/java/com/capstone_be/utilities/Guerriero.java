@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Pair;
+import org.springframework.stereotype.Component;
 
 import com.capstone_be.entities.Abilita;
 import com.capstone_be.entities.Incantesimo;
@@ -13,7 +15,11 @@ import com.capstone_be.entities.Privilegio;
 import com.capstone_be.services.AbilitaService;
 import com.capstone_be.services.PrivilegioService;
 
+@Component
 public class Guerriero implements Classe {
+	
+	@Autowired
+	PrivilegioService serv;
 
 	@Override
 	public void applicaCambiamenti(Personaggio p) {

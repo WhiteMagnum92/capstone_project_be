@@ -2,7 +2,9 @@ package com.capstone_be.utilities;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Pair;
+import org.springframework.stereotype.Component;
 
 import com.capstone_be.entities.Abilita;
 import com.capstone_be.entities.Incantesimo;
@@ -11,7 +13,11 @@ import com.capstone_be.entities.Privilegio;
 import com.capstone_be.services.AbilitaService;
 import com.capstone_be.services.PrivilegioService;
 
+@Component
 public class Ladro implements Classe {
+	
+	@Autowired
+	PrivilegioService serv;
 
 	@Override
 	public void applicaCambiamenti(Personaggio p) {
@@ -20,7 +26,6 @@ public class Ladro implements Classe {
 		Integer modCos= (carat.get(2)-10)/2;
 		p.setPf(8+modCos);
 		p.setCompetenza(2);
-		PrivilegioService serv= new PrivilegioService();
 		Privilegio priv=serv.findByName("Meastria");
 		Privilegio priv1=serv.findByName("Armature leggere");
 		Privilegio priv2=serv.findByName("Gergo ladresco");
