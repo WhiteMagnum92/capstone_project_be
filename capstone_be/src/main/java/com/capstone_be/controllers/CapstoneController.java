@@ -57,7 +57,7 @@ public class CapstoneController {
 		return ResponseEntity.ok(personaggioService.getById(id));
 	}
 
-	@GetMapping(value = { "/personaggi" })
+	@GetMapping(value = { "/personaggi/new" })
 	public ResponseEntity<String> creaPersonaggio(@RequestParam String nome) {
 		Personaggio oldP = personaggioService.findByName(nome);
 		if (oldP != null)

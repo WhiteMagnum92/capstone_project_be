@@ -11,14 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.capstone_be.configuration.payload.JWTAuthResponse;
 import com.capstone_be.configuration.payload.LoginDto;
 import com.capstone_be.configuration.payload.RegisterDto;
+import com.capstone_be.entities.User;
+import com.capstone_be.repositories.UserRepository;
 import com.capstone_be.services.AuthService;
 
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-
+    
     private AuthService authService;
-
+  
     public AuthController(AuthService authService) {
         this.authService = authService;
     }
@@ -26,14 +28,7 @@ public class AuthController {
     // Build Login REST API
     @PostMapping(value = {"/login", "/signin"})
     public ResponseEntity<JWTAuthResponse> login(@RequestBody LoginDto loginDto){
-           	
-    	String token = authService.login(loginDto);
-
-        JWTAuthResponse jwtAuthResponse = new JWTAuthResponse();
-        jwtAuthResponse.setUsername(loginDto.getUsername());
-        jwtAuthResponse.setAccessToken(token);
-
-        return ResponseEntity.ok(jwtAuthResponse);
+        return ResponseEntity.ok(authService.login(loginDto));
     }
 
     // Build Register REST API

@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.capstone_be.configuration.exception.MyAPIException;
+import com.capstone_be.configuration.payload.JWTAuthResponse;
 import com.capstone_be.configuration.payload.LoginDto;
 import com.capstone_be.configuration.payload.RegisterDto;
 import com.capstone_be.configuration.security.JwtTokenProvider;
@@ -44,7 +45,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public String login(LoginDto loginDto) {
+    public JWTAuthResponse login(LoginDto loginDto) {
         
     	Authentication authentication = authenticationManager.authenticate(
         		new UsernamePasswordAuthenticationToken(
@@ -55,8 +56,20 @@ public class AuthServiceImpl implements AuthService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String token = jwtTokenProvider.generateToken(authentication);
-
-        return token;
+        
+     // crea oggetto jwtaiuth reponse
+        JWTAuthResponse jwtAuthResponse = new JWTAuthResponse();
+        jwtAuthResponse.setUsername(loginDto.getUsername());
+        jwtAuthResponse.setAccessToken(token);
+        User user = userRepository.findByUsername(loginDto.getUsername()).get();
+        jwtAuthResponse.setEmail(user.getEmail());
+        jwtAuthResponse.setId(user.getId());
+        jwtAuthResponse.setName(user.getName());
+        jwtAuthResponse.setRoles(user.getRoles());
+        jwtAuthResponse.setPersonaggi(user.getPersonaggi());
+       
+        return jwtAuthResponse;
+    
     }
 
     @Override

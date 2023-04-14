@@ -32,7 +32,7 @@ public class User {
     private String email;
     @Column(nullable = false)
     private String password;
-    @OneToMany(mappedBy = "user") // da chiedere a bumbi se corretto
+    @OneToMany(mappedBy = "user")
     private List<Personaggio> personaggi;
     
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)

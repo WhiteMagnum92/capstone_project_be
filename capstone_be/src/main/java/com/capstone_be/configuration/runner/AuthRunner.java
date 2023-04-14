@@ -79,22 +79,24 @@ public class AuthRunner implements ApplicationRunner {
 				);
 		
 		
-		RegisterDto userAdmin = new RegisterDto();
-		userAdmin.setName("Admino Stretor");
-		userAdmin.setUsername("admin");
-		userAdmin.setEmail("admin@example.com");
-		userAdmin.setPassword(passwordEncoder.encode("admin"));
-		userAdmin.setRoles(roleAdmin);
-		System.out.println(authService.register(userAdmin));
+				/*
+				 * RegisterDto userAdmin = new RegisterDto();
+				 * userAdmin.setName("Admino Stretor"); userAdmin.setUsername("admin");
+				 * userAdmin.setEmail("admin@example.com");
+				 * userAdmin.setPassword(passwordEncoder.encode("admin"));
+				 * userAdmin.setRoles(roleAdmin);
+				 * System.out.println(authService.register(userAdmin));
+				 */
 		
-		/*
-		 * RegisterDto simpleUser = new RegisterDto();
-		 * simpleUser.setName("Mario Rossi"); simpleUser.setUsername("mariorossi");
-		 * simpleUser.setEmail("m.rossi@example.com");
-		 * simpleUser.setPassword(passwordEncoder.encode("12345"));
-		 * simpleUser.setRoles(roleUser);
-		 * System.out.println(authService.register(simpleUser));
-		 */
+		
+				/*
+				 * RegisterDto simpleUser = new RegisterDto();
+				 * simpleUser.setName("Mario Rossi"); simpleUser.setUsername("mariorossi");
+				 * simpleUser.setEmail("m.rossi@example.com");
+				 * simpleUser.setPassword(passwordEncoder.encode("12345"));
+				 * simpleUser.setRoles(roleUser);
+				 * System.out.println(authService.register(simpleUser));
+				 */
 		
 		/*
 		 * RegisterDto userModerator = new RegisterDto();
