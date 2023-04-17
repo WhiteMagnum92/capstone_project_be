@@ -1,0 +1,14 @@
+package com.capstone_be.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.capstone_be.repositories.AbilitaRepository;
+
+@RestController
+public class AbilitaController {
+	
+	@Autowired
+	AbilitaRepository abilitaRepository;
+
+}

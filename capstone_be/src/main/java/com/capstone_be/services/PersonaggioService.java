@@ -1,6 +1,7 @@
 package com.capstone_be.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import com.capstone_be.repositories.PersonaggioRepository;
 import com.capstone_be.repositories.PrivilegioRepository;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 
 @Service
 public class PersonaggioService {
@@ -38,10 +40,16 @@ public class PersonaggioService {
 		repo.save(p);
 	}
 	
-	/*
-	public List<Personaggio> findByUser(User u) {
-		return repo.findByUser(u);
+	
+	public List<Personaggio> findByUser(User utentePreso) {
+		return repo.findByUser(utentePreso);
 				
-	}*/
+	}
+	
+	// delete personaggio tramite user
+	@Transactional
+	public void deletePersonaggio(String nomePersonaggio, Long userId) {
+		 repo.deletePersonaggio(nomePersonaggio, userId);
+	}
 
 }

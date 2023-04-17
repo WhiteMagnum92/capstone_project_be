@@ -60,8 +60,7 @@ public class SecurityConfig {
 
     	http.cors().and().csrf().disable()
         .authorizeHttpRequests((authorize) -> authorize
-        		.requestMatchers("/api/**").permitAll()
-        		.requestMatchers("/api/pg/**").permitAll()//TODO to be removed questa riga rimuove il nostro controller da autenticazione
+        		.requestMatchers("/api/**").permitAll()//TODO da rimuovere per mettere sotto autenticazione tutte le rotte escluse le auth
                 .requestMatchers("/api/auth/**").permitAll()
                 .anyRequest().authenticated())
         .exceptionHandling( exception -> exception
