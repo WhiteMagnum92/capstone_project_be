@@ -31,9 +31,11 @@ public class PersonaggioService {
 	}
 
 	public Personaggio findByName(String nome) {
-		return repo.findByName(nome)
-				.orElseThrow(() -> new EntityNotFoundException("Personaggio non trovato!!!"));
-		
+		Optional<Personaggio> oPersonaggio=repo.findByName(nome);
+		if(oPersonaggio.isPresent())
+			return oPersonaggio.get();
+		else
+			return null;
 	}
 	
 	public void save(Personaggio p) {
@@ -42,8 +44,7 @@ public class PersonaggioService {
 	
 	
 	public List<Personaggio> findByUser(User utentePreso) {
-		return repo.findByUser(utentePreso);
-				
+		return repo.findByUser(utentePreso);				
 	}
 	
 	// delete personaggio tramite user

@@ -1,6 +1,7 @@
 package com.capstone_be.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capstone_be.entities.Personaggio;
+import com.capstone_be.entities.User;
 import com.capstone_be.services.PersonaggioService;
+import com.capstone_be.services.UserService;
 import com.capstone_be.utilities.Barbaro;
 import com.capstone_be.utilities.Bardo;
 import com.capstone_be.utilities.Chierico;
@@ -43,9 +46,11 @@ import com.capstone_be.utilities.Warlock;
 @RestController
 @RequestMapping("/api")
 public class PersonaggioController {
-    
+
 	@Autowired
 	private PersonaggioService personaggioService;
+	@Autowired
+	private UserService userService;
 
 	/*
 	 * public CapstoneController(PersonaggioService personaggioService) {
@@ -61,21 +66,27 @@ public class PersonaggioController {
 	public ResponseEntity<Personaggio> getPersonaggio(@PathVariable Integer id) {
 		return ResponseEntity.ok(personaggioService.getById(id));
 	}
-	//crea nuovo personaggio
-	@GetMapping(value = { "/personaggi/new" })
-	public ResponseEntity<String> creaPersonaggio(@RequestParam String nome) {
+
+	// crea nuovo personaggio
+	@GetMapping(value = { "/{username}/personaggi/new/{nome}" })
+	public ResponseEntity<String> creaPersonaggio(@PathVariable String nome, @PathVariable String username) {
+		Optional<User> user = userService.cercaTramiteUsername(username);
 		Personaggio oldP = personaggioService.findByName(nome);
 		if (oldP != null)
 			return ResponseEntity.ok("Personaggio con stesso nome già presente");
+		if (!user.isPresent())
+			return ResponseEntity.ok("Utente non trovato");
+		User u = user.get();
 		Personaggio p = new Personaggio();
 		p.setName(nome);
-
+		p.setUser(u);
 		personaggioService.save(p);
 		// p=personaggioService.findByName(nome);
 		// valutare se id è gia buono
 
-		return ResponseEntity.ok("" + p.getId());
+		return ResponseEntity.ok(""+p.getId());
 	}
+
 	// tira fuori le domande sulla classe per il FE
 	@GetMapping(value = { "/personaggi/{id}/setrazza" })
 	public ResponseEntity<List<Domanda>> setRazza(@PathVariable Integer id, @RequestParam String razza) {
@@ -116,7 +127,8 @@ public class PersonaggioController {
 		List<Domanda> domande = r.modificheNecessarie();
 		return ResponseEntity.ok(domande);
 	}
-	//set razza di un personaggio
+
+	// set razza di un personaggio
 	@PostMapping(value = { "/personaggi/{id}/setrazza" })
 	public ResponseEntity<Boolean> setRisposteRazza(@RequestBody List<List<String>> risposte,
 			@PathVariable Integer id) {
@@ -157,6 +169,19 @@ public class PersonaggioController {
 			personaggioService.save(p);
 		return ResponseEntity.ok(res);
 	}
+	
+	@PostMapping(value= {"/personaggi/{id}/setcaratteristiche"})
+	public ResponseEntity<String> setCarat(@RequestBody List<Integer> carat, @PathVariable Integer id ){
+		Personaggio p=personaggioService.getById(id);
+		if(p==null)
+			return ResponseEntity.badRequest().body("Personaggio non trovato");
+		if(carat==null||carat.size()!=6)
+			return  ResponseEntity.badRequest().body("Caratteristiche non valide");
+		p.setCaratteristiche(carat);
+		personaggioService.save(p);
+		return  ResponseEntity.ok("Caratteristiche salvate");
+	}
+
 	// tira fuori le domande sulla classe per il FE
 	@GetMapping(value = { "/personaggi/{id}/setclasse" })
 	public ResponseEntity<List<Domanda>> setClasse(@PathVariable Integer id, @RequestParam String classe) {
@@ -206,6 +231,7 @@ public class PersonaggioController {
 		List<Domanda> domande = c.modificheNecessarie();
 		return ResponseEntity.ok(domande);
 	}
+
 	// set classe di un personaggio
 	@PostMapping(value = { "/personaggi/{id}/setclasse" })
 	public ResponseEntity<Boolean> setRisposteClasse(@RequestBody List<List<String>> risposte,
@@ -256,13 +282,14 @@ public class PersonaggioController {
 			personaggioService.save(p);
 		return ResponseEntity.ok(res);
 	}
-	
+
 	// delete un personaggio tramite id utente e nome personaggio
-    @DeleteMapping("/{userId}/delete/personaggi/{nomePersonaggio}")
-    @PreAuthorize("hasRole('ADMIN')or hasRole('USER')")
-    public ResponseEntity<?> deleteScheda( @PathVariable("userId") Long userId,@PathVariable("nomePersonaggio") String nomePersonaggio) {
-    	personaggioService.deletePersonaggio(nomePersonaggio, userId);
-        return ResponseEntity.ok().build();
-    }
+	@DeleteMapping("/{userId}/delete/personaggi/{nomePersonaggio}")
+	@PreAuthorize("hasRole('ADMIN')or hasRole('USER')")
+	public ResponseEntity<?> deletePersonaggio(@PathVariable("userId") Long userId,
+			@PathVariable("nomePersonaggio") String nomePersonaggio) {
+		personaggioService.deletePersonaggio(nomePersonaggio, userId);
+		return ResponseEntity.ok().build();
+	}
 
 }

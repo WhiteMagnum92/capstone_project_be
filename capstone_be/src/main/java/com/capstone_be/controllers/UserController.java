@@ -28,35 +28,33 @@ public class UserController {
 	UserService userService;
 	@Autowired
 	PersonaggioService personaggioService;
-	
-	//prendere i personaggi da username
+
+	// prendere i personaggi da username
 	@GetMapping("/personaggi/{username}")
 	@PreAuthorize("hasRole('ADMIN')or hasRole('USER')")
 	public ResponseEntity<List<Personaggio>> getPersonaggiUser(@PathVariable String username) {
 
 		Optional<User> oUtentePreso = userService.cercaTramiteUsername(username);
-		if(oUtentePreso.isPresent()) {
+		if (oUtentePreso.isPresent()) {
 			List<Personaggio> personaggiPresi = personaggioService.findByUser(oUtentePreso.get());
 
 			return new ResponseEntity<>(personaggiPresi, HttpStatus.OK);
-		}
-		else
+		} else
 			return new ResponseEntity<>(null, HttpStatus.OK);
 	}
-	
-	//cerca per username
+
+	// cerca per username
 	@GetMapping("/username/{username}")
-    @PreAuthorize("hasRole('ADMIN')or hasRole('USER')")
-    public ResponseEntity<Optional<User>> getUserbyUsername(@PathVariable String username){
-    	return new ResponseEntity<>(userService.cercaTramiteUsername(username),HttpStatus.OK);
-    }
-	
-	//delete
-    @DeleteMapping ("/delete/{username}")
-    @PreAuthorize("hasRole('ADMIN')or hasRole('USER')")
-    public ResponseEntity<User> deleteUser(@PathVariable String username){
-        return new ResponseEntity<>(userService.deleteByUsername(username), HttpStatus.OK);
-    }
-    
-    
+	@PreAuthorize("hasRole('ADMIN')or hasRole('USER')")
+	public ResponseEntity<Optional<User>> getUserbyUsername(@PathVariable String username) {
+		return new ResponseEntity<>(userService.cercaTramiteUsername(username), HttpStatus.OK);
+	}
+
+	// delete
+	@DeleteMapping("/delete/{username}")
+	@PreAuthorize("hasRole('ADMIN')or hasRole('USER')")
+	public ResponseEntity<User> deleteUser(@PathVariable String username) {
+		return new ResponseEntity<>(userService.deleteByUsername(username), HttpStatus.OK);
+	}
+
 }
